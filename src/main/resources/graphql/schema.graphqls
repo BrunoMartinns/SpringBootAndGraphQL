@@ -1,0 +1,35 @@
+type Mutation {
+    addClient(client: ClientInput) : Client
+    addBooks(booksInput: BooksInput): Books
+}
+
+input ClientInput {
+    name: String!
+}
+
+type Client{
+    name: String
+    id: ID!
+}
+
+type Query {
+    clientById(id: ID): Client
+    books: [Books]
+}
+
+input BooksInput{
+    titulo: String
+    price: Float!
+    autor: String
+    genero: String
+    clientId: ID!
+}
+
+type Books{
+    id: ID
+    titulo: String
+    price: Float
+    autor: String
+    genero: String
+    client: Client
+}

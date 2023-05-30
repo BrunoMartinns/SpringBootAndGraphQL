@@ -1,0 +1,13 @@
+package com.example.projetoGraphQl.Redes;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class RedesApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
