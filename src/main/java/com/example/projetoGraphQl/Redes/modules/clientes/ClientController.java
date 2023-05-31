@@ -17,7 +17,7 @@ public class ClientController {
 
     @MutationMapping()
     ClientEntity addClient(@Argument ClientInput client){
-        ClientEntity newClient = this.clientRepository.save(new ClientEntity(client.name));
+        ClientEntity newClient = this.clientRepository.save(new ClientEntity(client.name, client.cpf, client.cidade, client.uf, client.telefone, client.email));
         return newClient;
     }
 
@@ -28,7 +28,7 @@ public class ClientController {
     }
 
 
-    record ClientInput(String name) {
+    record ClientInput(String name, String cpf , String cidade, String uf, String telefone, String email) {
     }
 
 

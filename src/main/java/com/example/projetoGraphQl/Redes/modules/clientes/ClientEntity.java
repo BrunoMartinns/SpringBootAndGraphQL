@@ -33,8 +33,13 @@ public class ClientEntity {
 
 
 
-    public ClientEntity(String name){
+    public ClientEntity(String name, String cpf, String cidade, String uf, String telefone, String email){
         this.name = name;
+        this.cpf = cpf;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.telefone = telefone;
+        this.email = email;
     }
 
     
