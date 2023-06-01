@@ -27,6 +27,12 @@ public class ClientController {
         return clientes;
     }
 
+    @QueryMapping()
+    Iterable<ClientEntity> clients(){
+        var clientes = this.clientRepository.findAll();
+        return clientes;
+    }
+
 
     record ClientInput(String name, String cpf , String cidade, String uf, String telefone, String email) {
     }

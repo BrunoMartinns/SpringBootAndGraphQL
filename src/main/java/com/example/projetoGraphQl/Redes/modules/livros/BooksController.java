@@ -1,5 +1,6 @@
 package com.example.projetoGraphQl.Redes.modules.livros;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class BooksController {
     Iterable<BooksEntity> books(){
         var books = this.booksRepository.findAll();
         return books;
+    }
+
+    @QueryMapping
+    Iterable<BooksEntity> booksByClientId(@Argument UUID clientId) {
+        Iterable<BooksEntity> booksClient = this.booksRepository.findByClientId(clientId);
+        return booksClient;
     }
 
     record BooksInput(String titulo, float price, String autor, String genero, UUID clientId){

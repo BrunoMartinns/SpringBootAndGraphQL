@@ -25,6 +25,9 @@ type Client{
 type Query {
     clientById(id: ID): Client
     books: [Books]
+    clients: [Client]
+    booksByClientId(clientId: ID): [Books]
+
 }
 
 input BooksInput{
@@ -34,6 +37,7 @@ input BooksInput{
     genero: String
     clientId: ID!
 }
+
 
 type Books{
     id: ID
