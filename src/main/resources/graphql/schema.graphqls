@@ -1,6 +1,7 @@
 type Mutation {
     addClient(client: ClientInput) : Client
     addBooks(booksInput: BooksInput): Books
+    updateClientEntity(id: ID, client: ClientInput): Client
 }
 
 input ClientInput {

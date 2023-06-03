@@ -1,5 +1,6 @@
 package com.example.projetoGraphQl.Redes.modules.clientes;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,6 +20,23 @@ public class ClientController {
     ClientEntity addClient(@Argument ClientInput client){
         ClientEntity newClient = this.clientRepository.save(new ClientEntity(client.name, client.cpf, client.cidade, client.uf, client.telefone, client.email));
         return newClient;
+    }
+
+    @MutationMapping()
+    ClientEntity updateClientEntity(@Argument UUID id, @Argument ClientInput client){
+        Optional<ClientEntity> clientes = this.clientRepository.findById(id);
+        if (clientes.isPresent()) {
+            ClientEntity clientEntity = clientes.get();
+            clientEntity.setName(client.name);
+            clientEntity.setCpf(client.cpf);
+            clientEntity.setEmail(client.email);
+            clientEntity.setTelefone(client.telefone);
+            clientEntity.setCidade(client.cidade);
+            clientEntity.setUf(client.uf);
+            return clientRepository.save(clientEntity);
+        } else {
+            throw new NoSuchElementException("Cliente não encontrado");
+        }
     }
 
     @QueryMapping()
